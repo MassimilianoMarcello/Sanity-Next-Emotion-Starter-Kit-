@@ -6,8 +6,7 @@ import {schemaTypes} from './schemas'
 export default defineConfig({
   name: 'default',
   title: 'CHANGE THE TITLE',
-
-  projectId: 'PASTE SANITY ID',
+ projectId: 'PASTE SANITY ID',
   dataset: 'production',
   basePath:"/studio",
   plugins: [structureTool(), visionTool()],
