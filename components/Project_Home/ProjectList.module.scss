@@ -47,3 +47,24 @@
     }
   }
 }
+
+.projectCard {
+    position: relative; // Necessario per posizionare la bubble rispetto alla card
+    cursor: pointer; // Cambia il cursore quando si passa sopra
+  
+    .infoBubble {
+      position: absolute;
+      top: -10px; // Posiziona sopra la scheda
+      left: 50%;
+      transform: translateX(-50%); // Centra la bubble
+      background-color: white; // Colore di sfondo
+      border: 1px solid #ccc; // Bordo del quadrato
+      padding: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Ombra per un effetto di profondità
+      z-index: 10; // Assicurati che sia sopra altri elementi
+      border-radius: 4px; // Angoli arrotondati
+  
+      // Puoi anche aggiungere altre regole per il design della bubble
+    }
+  }
+  
