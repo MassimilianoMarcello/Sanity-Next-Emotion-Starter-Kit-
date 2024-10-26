@@ -1,0 +1,30 @@
+// _globals.scss
+// _reset.scss
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: $font-stack;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+
+
+body {
+    line-height: 1.6;
+  }
+  
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    &:hover {
+      color: darken($primary-color, 10%);
+    }
+  }
+  

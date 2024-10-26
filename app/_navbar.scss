@@ -1,0 +1,26 @@
+// _navbar.scss
+.navbar {
+    background-color: $primary-color;
+    padding: $spacing-unit;
+    .navbar-content {
+      @include flex-center;
+      justify-content: space-between;
+      .logo {
+        img {
+          height: 40px;
+        }
+      }
+      .navbar-links {
+        display: flex;
+        gap: $spacing-unit;
+        .nav-link {
+          color: white;
+          padding: 8px;
+          &:hover {
+            color: $secondary-color;
+          }
+        }
+      }
+    }
+  }
+  

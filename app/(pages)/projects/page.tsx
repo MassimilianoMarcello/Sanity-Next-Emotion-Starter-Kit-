@@ -1,10 +1,11 @@
+import ProjectHome from "@/components/Project_Home/ProjectHome"
 
 
 
 const MyProjects = () => {
   return (
     <div>
-    project
+ <ProjectHome/>
    
     </div>
   )

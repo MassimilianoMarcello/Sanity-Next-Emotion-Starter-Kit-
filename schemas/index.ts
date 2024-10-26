@@ -1,3 +1,3 @@
+import projects from './projects';
 
-
-export const schemaTypes = []
+export const schemaTypes = [projects]

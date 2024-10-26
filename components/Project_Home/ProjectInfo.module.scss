@@ -1,0 +1,76 @@
+// .projectInfo {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     width: 100%;
+//     height: 100%;
+//     padding: 10px;
+//     margin-right: -1rem;
+//     margin-top: 0rem;
+//     background-color: #f1f1f1;
+//     color: $white;
+//     transition: all 0.7s ease;
+//     opacity: 0;
+//     transform: translateY(-100%);
+    
+//     h3 {
+//       font-family: $custom-font;
+//       word-spacing: 0.01rem;
+//       margin-left: 2rem;
+//       margin-top: 1rem;
+//       padding-left: 0.5rem;
+//       border-left: 1rem solid $yellow;
+//       color: $blue-dark;
+//       font-size: 2.5rem;
+//     }
+//   }
+  
+//   .visible {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+  
+//   .hidden {
+//     opacity: 0;
+//     pointer-events: none;
+//   }
+  
+//   .challengesList {
+//     list-style-type: none;
+//     padding-left: 3rem;
+//     margin-right: -6rem;
+//     margin-top: -0.5rem;
+//     margin-bottom: 1rem;
+    
+//     h4 {
+//       font-size: 1.6rem;
+//       margin-bottom: 0.7rem;
+//     }
+    
+//     @media screen and (max-width: 600px) {
+//       h4 {
+//         font-size: 1.7rem;
+//         color: $platinum-text;
+//         margin-bottom: 2rem;
+//         margin-top: -1rem;
+//       }
+//     }
+//   }
+  
+//   .singleChallenge {
+//     font-size: 1rem;
+//     margin-bottom: 0.5rem;
+//     color: $blue-light;
+//     font-family: $primary-font;
+//     word-spacing: 0.01rem;
+//     margin-right: 6rem;
+//     margin-top: 1rem;
+//     padding: 0.1rem 0.5rem;
+//     color: $blue-dark;
+//   }
+  
+//   .buttons {
+//     display: flex;
+//     align-items: flex-start;
+//     position: absolute
+//   }

@@ -5,8 +5,8 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'CHANGE THE TITLE',
- projectId: 'PASTE SANITY ID',
+  title: 'Portfolio_Sanity_Next_Sass',
+ projectId: 'qpv8frw8',
   dataset: 'production',
   basePath:"/studio",
   plugins: [structureTool(), visionTool()],
