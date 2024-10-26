@@ -1,0 +1,95 @@
+@import '../../../main.module.scss'; 
+
+
+
+.projectContainer {
+  height: auto;
+  width: 50%;
+  margin: 5rem auto;
+  margin-top: 7rem;
+  background-color: $background-color;
+  border-right: 4px solid $primary-color;
+  border-left: 4px solid $primary-color;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titleContainer {
+  text-align: center;
+  margin-top: 4rem;
+  border-bottom: 4px solid $primary-color;
+}
+
+.howIMade {
+//   font-family: $primary-font; 
+  background-color: $secondary-color;
+  font-size: 5rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  color: $title-color;
+  margin-bottom: 0;
+}
+
+.titleProject {
+//   font-family: $primary-font; 
+  background-color: $title-color;
+  font-size: 5rem;
+  margin-top: 0;
+  padding: 1rem;
+  color: $secondary-color;
+  margin-bottom: 0;
+}
+
+.projectDescription {
+  margin: 1rem 3rem;
+  color: $text-color;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  margin-top: 3rem;
+  font-size: 1.3rem;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.styledButton {
+  text-decoration: none;
+//   font-family: $headers-font; 
+  letter-spacing: 0.07rem;
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: $text-color;
+  background-color: $accent-color;
+  border-right: 4px solid $primary-color;
+  border-bottom: 4px solid $primary-color;
+  display: inline-block;
+  margin-left: 0.5rem;
+
+  a {
+    text-decoration: none;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: $text-color;
+  }
+
+  &:hover {
+    background-color: $highlight-color;
+    border-right: 4px solid $secondary-color;
+    border-bottom: 4px solid $secondary-color;
+  }
+}

@@ -1,8 +1,16 @@
 // _variables.scss
-$primary-color: #3498db;
-$secondary-color: #2ecc71;
-$text-color: #333;
-$background-color: #f9f9f9;
+$primary-color: #9175ba;        // Colore primario (viola)
+$secondary-color: #d4f9fd;      // Colore secondario (azzurro chiaro)
+$accent-color: #259296;         // Colore d'accento (verde-teal)
+$background-color: #acd1db;     // Colore di sfondo (celeste tenue)
+$title-color: #164595;          // Colore per titoli (blu intenso)
+$text-color: #9ebedd;           // Colore per testo principale (blu chiaro)
+
+$warning-color: #e74c3c;        // Colore per avvisi o errori (rosso intenso)
+$success-color: #27ae60;        // Colore per messaggi di successo (verde scuro)
+$neutral-gray: #b0b0b0;         // Colore neutro per testo secondario o bordi (grigio chiaro)
+$highlight-color: #f1c40f;      // Colore per evidenziare dettagli (giallo acceso)
+
 
 // $font-stack: 'Roboto', sans-serif;
 $spacing-unit: 16px;

@@ -1,0 +1,99 @@
+// Import delle variabili di colore
+@import '../../app/main.module.scss';
+
+.home-section {
+  padding: 2rem;
+  background-color: $background-color;
+  color: $text-color;
+  font-family: Arial, sans-serif;
+
+  // Titolo della sezione
+  .header-section {
+    text-align: center;
+    color: $title-color;
+    margin-bottom: 1.5rem;
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: $primary-color;
+    }
+  }
+
+  // Stili per i progetti
+  .project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+
+    .project-item {
+      background-color: $secondary-color;
+      border: 1px solid $neutral-gray;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        color: $accent-color;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-description {
+        font-size: 1rem;
+        color: $text-color;
+        line-height: 1.6;
+      }
+
+      // Toggle per info aggiuntive
+      .project-toggle {
+        margin-top: 1rem;
+        background-color: $highlight-color;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 4px;
+
+        &:hover {
+          background-color: darken($highlight-color, 10%);
+        }
+      }
+    }
+  }
+
+  // Filtro per i progetti
+  .project-filter {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    select,
+    input {
+      padding: 0.5rem;
+      border: 1px solid $neutral-gray;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      background-color: $accent-color;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: darken($accent-color, 10%);
+      }
+    }
+  }
+}
