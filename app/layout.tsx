@@ -4,7 +4,7 @@
 import "./main.module.scss"; 
 
 
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/_NavBar/Navbar";
 
 const almaqFont = "../public/fonts/Almaq Refined.ttf";
 const theme = {

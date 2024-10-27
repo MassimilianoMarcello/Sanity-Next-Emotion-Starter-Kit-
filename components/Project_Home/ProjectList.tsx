@@ -3,6 +3,7 @@ import ProjectInfo from "./ProjectInfo";
 import TechnologiesUsed from "./TecnologiesUsed";
 import { PortableText } from '@portabletext/react';
 import styles from "./ProjectList.module.scss"; 
+import  '../../app/main.module.scss';
 
 interface Technology {
   _id: string;
@@ -41,7 +42,9 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects, openProjectId, togg
         {projects.map((project) => (
           <div
             key={project._id}
-            className={`${styles.projectCard} ${project.importance === "main" ? styles.mainProject : ""}`}
+          
+            className={`${styles.projectCard} ${project.importance === 'main' ? 'main' : 'other-style'}`}
+
             onClick={() => toggleProjectInfo(project._id)}
           >
             <div className={styles.boxImageTextProject}>

@@ -1,4 +1,5 @@
 import projects from './projects';
 import technology from './technology';
+import testproject from './testProject';
 
-export const schemaTypes = [projects,technology]
+export const schemaTypes = [projects,technology,testproject]

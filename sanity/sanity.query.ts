@@ -1,6 +1,7 @@
 import { groq } from "next-sanity";
 import client from "./sanity.client";
 import { Project } from "@/types/projects";
+import { TestProject } from "@/types/TestProject";
 // import  {Post}  from "@/types/Post";
 // import { AboutMe } from "@/types/AboutMe";
 
@@ -64,3 +65,21 @@ export async function getProject(slug: string): Promise<Project> {
 }
 
 
+export async function getTestProject(): Promise<TestProject[]> {
+    const testproject = await client.fetch(
+      groq`*[_type == "testproject"]{
+        _id,
+        name,
+        description,
+        date,
+        importance,
+    "technologies": technologies[]-> {
+    _id,
+    name,
+    icon
+  },
+        // Aggiungi altri campi necessari qui
+      }`
+    );
+    return testproject;
+}

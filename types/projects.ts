@@ -4,7 +4,7 @@ export interface Technology {
     _id: string;
     name: string;
     slug: string;
-    // Aggiungi altri campi se necessario
+  
   }
 export type Project = {
   _id: string;
