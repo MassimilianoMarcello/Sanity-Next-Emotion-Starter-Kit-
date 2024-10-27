@@ -10,7 +10,12 @@ export async function getProjects(): Promise<Project[]> {
 name,
     _id,
      _key,
-      technologies,
+"technologies": technologies[]-> {
+    _id,
+    name,
+    icon
+  },
+      importance,
     _createdAt,
     _updatedAt,
    _type,
@@ -42,7 +47,13 @@ export async function getProject(slug: string): Promise<Project> {
       "image": image.asset->url,
       url,
       content,
-      githubUrl
+      importance,
+      githubUrl,
+"technologies": technologies[]-> {
+    _id,
+    name,
+    icon
+  },
     }`,
     { slug },
     {

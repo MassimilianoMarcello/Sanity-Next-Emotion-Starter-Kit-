@@ -5,7 +5,7 @@ import ProjectHome from "@/components/Project_Home/ProjectHome"
 const MyProjects = () => {
   return (
     <div>
- <ProjectHome/>
+ {/* <ProjectHome/> */}
    
     </div>
   )

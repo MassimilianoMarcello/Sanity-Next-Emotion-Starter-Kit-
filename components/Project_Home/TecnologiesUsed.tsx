@@ -1,16 +1,22 @@
 import React from 'react';
-import styles from "./TecnologiesUsed.module.scss"; 
+
+interface Technology {
+  _id: string;
+  name: string;
+  slug: string; // Aggiungi altri campi se necessario
+}
 
 interface TechnologiesUsedProps {
-  technologies: string[];
+  technologies: Technology[];
 }
 
 const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({ technologies }) => {
   return (
-    <div className="technologies-used">
+    <div>
+      <h4>Technologies Used:</h4>
       <ul>
-        {technologies.map((technology, index) => (
-          <li key={index}>{technology}</li>
+        {technologies.map((tech) => (
+          <li key={tech._id}>{tech.name}</li> // Usa tech.name per visualizzare il nome della tecnologia
         ))}
       </ul>
     </div>
@@ -18,4 +24,5 @@ const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({ technologies }) => 
 };
 
 export default TechnologiesUsed;
+
 

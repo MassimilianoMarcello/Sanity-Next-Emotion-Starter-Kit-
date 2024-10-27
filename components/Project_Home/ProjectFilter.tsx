@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import NoProjectsMessage from "./NoProject";
 import MediumBlueBorder from "./MediuBlueBorder";
-import { Project } from "@/types/projects"; // Assicurati che il path sia corretto
+import { Project } from "@/types/projects";
 
-import styles from "./ProjectFilter.module.scss"; 
-
-// Definisci i tipi delle props per il componente
 interface ProjectFilterProps {
   projects: Project[];
   setFilteredProjects: React.Dispatch<React.SetStateAction<Project[]>>;
@@ -20,12 +17,13 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({ projects, setFilteredProj
   useEffect(() => {
     if (!projects) return;
 
-    // Filtro progetti basato sulle tecnologie selezionate
     const filteredProjects = projects.filter((project) =>
-      selectedTechnologies.every((tech) => project.technologies.includes(tech))
+      selectedTechnologies.every((tech) =>
+        project.technologies?.map(t => t.name).includes(tech) // Controllo se technologies è definito
+      )
     );
-    setFilteredProjects(filteredProjects);
 
+    setFilteredProjects(filteredProjects);
     setNoProjectsMessage(filteredProjects.length === 0);
     setShowInvalidCombination(
       selectedTechnologies.length > 0 && filteredProjects.length === 0
@@ -46,27 +44,28 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({ projects, setFilteredProj
     setShowInvalidCombination(false);
   };
 
+  // Mappa le tecnologie uniche a stringhe, controllando che technologies non sia null o undefined
+  const uniqueTechnologies = Array.from(new Set(
+    projects.flatMap((project) =>
+      Array.isArray(project.technologies) && project.technologies !== null
+        ? project.technologies.map((tech) => tech?.name) // Usa l'optional chaining
+        : [] // Ritorna un array vuoto se technologies non è un array valido
+    )
+  ));
+
   return (
     <div className="filter-container">
       <MediumBlueBorder />
       <section className="filter">
-        {projects &&
-          projects.reduce<string[]>((technologies, project) => {
-            project.technologies.forEach((tech) => {
-              if (!technologies.includes(tech)) {
-                technologies.push(tech);
-              }
-            });
-            return technologies;
-          }, []).map((technology) => (
-            <button
-              key={technology}
-              onClick={() => handleToggleTechnology(technology)}
-              className={`the-button ${selectedTechnologies.includes(technology) ? 'active' : ''} ${showInvalidCombination ? 'invalid' : ''}`}
-            >
-              {technology}
-            </button>
-          ))}
+        {uniqueTechnologies.map((technology) => (
+          <button
+            key={technology}
+            onClick={() => handleToggleTechnology(technology)}
+            className={`the-button ${selectedTechnologies.includes(technology) ? 'active' : ''} ${showInvalidCombination ? 'invalid' : ''}`}
+          >
+            {technology}
+          </button>
+        ))}
         <button className="clear-button" onClick={handleClearSelection}>Clear</button>
       </section>
       {noProjectsMessage && (
@@ -77,4 +76,9 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({ projects, setFilteredProj
 };
 
 export default ProjectFilter;
+
+
+
+
+
 

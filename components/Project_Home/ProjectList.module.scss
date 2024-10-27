@@ -65,6 +65,13 @@
       border-radius: 4px; // Angoli arrotondati
   
       // Puoi anche aggiungere altre regole per il design della bubble
+// y  questo cambia lo stile dei progetti che hanno una categoria main nello schema
+      &.mainProject {
+        // Stile specifico per il progetto principale
+        width: 100%; // Occupare tutta la larghezza
+        height: 100%; // Occupare l'altezza desiderata
+        // Altri stili come padding, margin, ecc.
+      }
     }
   }
   

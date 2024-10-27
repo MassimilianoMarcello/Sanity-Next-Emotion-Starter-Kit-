@@ -23,6 +23,7 @@ export default function Home() {
     useEffect(() => {
       const fetchProjects = async () => {
         const projectsData: Project[] = await getProjects();
+        console.log("Fetched Projects:", projectsData)
         setProjects(projectsData);
         setFilteredProjects(projectsData);
       };

@@ -10,7 +10,7 @@ interface HeaderSectionProps {
   setOpenProjectId: React.Dispatch<React.SetStateAction<string | null>>; // Assicurati che sia string | null
 }
 
-const HeaderSection: React.FC<HeaderSectionProps> = ({ projects, setFilteredProjects, setOpenProjectId }) => {
+const HeaderSection: React.FC<HeaderSectionProps> = ({  setFilteredProjects, setOpenProjectId }) => {
   return (
     <div className="header-section">
       {/* Il tuo codice qui */}

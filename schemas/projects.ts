@@ -47,7 +47,7 @@ const project = {
         name: "technologies",
         title: "Technologies",
         type: "array",
-        of: [{ type: "string" }],
+        of: [{ type: "reference", to: [{ type: "technology" }] }],
         description: "List of technologies used in the project"
       },
       {
@@ -56,6 +56,19 @@ const project = {
         type: "string",
         options: {
           list: ["In Progress", "Completed", "On Hold"],
+          layout: "radio"
+        }
+      },
+      {
+        name: "importance",
+        title: "Importance",
+        type: "string",
+        options: {
+          list: [
+            { title: "Main", value: "main" },
+            { title: "Secondary", value: "secondary" },
+            { title: "Testing Technologies", value: "testing" }
+          ],
           layout: "radio"
         }
       },
