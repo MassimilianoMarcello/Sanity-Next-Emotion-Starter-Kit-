@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import NoProjectsMessage from "./NoProject";
 import MediumBlueBorder from "./MediuBlueBorder";
 import { Project } from "@/types/projects";
@@ -9,49 +9,47 @@ interface ProjectFilterProps {
   setOpenProjectId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const ProjectFilter: React.FC<ProjectFilterProps> = ({ projects, setFilteredProjects, setOpenProjectId }) => {
+const ProjectFilter: React.FC<ProjectFilterProps> = ({
+  projects = [], // Impostiamo un array vuoto come default per evitare problemi
+  setFilteredProjects,
+  setOpenProjectId
+}) => {
   const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([]);
-  const [noProjectsMessage, setNoProjectsMessage] = useState<boolean>(false);
-  const [showInvalidCombination, setShowInvalidCombination] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!projects) return;
+    if (projects.length === 0) return; // Evita il filtro se non ci sono progetti
 
     const filteredProjects = projects.filter((project) =>
       selectedTechnologies.every((tech) =>
-        project.technologies?.map(t => t.name).includes(tech) // Controllo se technologies è definito
+        project.technologies?.some((t) => t.name === tech)
       )
     );
 
     setFilteredProjects(filteredProjects);
-    setNoProjectsMessage(filteredProjects.length === 0);
-    setShowInvalidCombination(
-      selectedTechnologies.length > 0 && filteredProjects.length === 0
-    );
     setOpenProjectId(null);
+    console.log("Filtered projects:", filteredProjects); // Controllo dello stato finale
   }, [selectedTechnologies, projects, setFilteredProjects, setOpenProjectId]);
 
   const handleToggleTechnology = (technology: string) => {
-    setSelectedTechnologies((prevTechnologies) =>
-      prevTechnologies.includes(technology)
-        ? prevTechnologies.filter((tech) => tech !== technology)
-        : [...prevTechnologies, technology]
+    setSelectedTechnologies((prev) =>
+      prev.includes(technology)
+        ? prev.filter((tech) => tech !== technology)
+        : [...prev, technology]
     );
   };
 
   const handleClearSelection = () => {
     setSelectedTechnologies([]);
-    setShowInvalidCombination(false);
   };
 
-  // Mappa le tecnologie uniche a stringhe, controllando che technologies non sia null o undefined
-  const uniqueTechnologies = Array.from(new Set(
-    projects.flatMap((project) =>
-      Array.isArray(project.technologies) && project.technologies !== null
-        ? project.technologies.map((tech) => tech?.name) // Usa l'optional chaining
-        : [] // Ritorna un array vuoto se technologies non è un array valido
-    )
-  ));
+  const uniqueTechnologies = useMemo(() => 
+    Array.from(new Set(
+      projects.flatMap((project) =>
+        project.technologies?.map((tech) => tech.name) || []
+      )
+    )), 
+    [projects]
+  );
 
   return (
     <div className="filter-container">
@@ -61,14 +59,14 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({ projects, setFilteredProj
           <button
             key={technology}
             onClick={() => handleToggleTechnology(technology)}
-            className={`the-button ${selectedTechnologies.includes(technology) ? 'active' : ''} ${showInvalidCombination ? 'invalid' : ''}`}
+            className={`the-button ${selectedTechnologies.includes(technology) ? 'active' : ''}`}
           >
             {technology}
           </button>
         ))}
         <button className="clear-button" onClick={handleClearSelection}>Clear</button>
       </section>
-      {noProjectsMessage && (
+      {setFilteredProjects.length === 0 && selectedTechnologies.length > 0 && (
         <NoProjectsMessage handleClearSelection={handleClearSelection} />
       )}
     </div>
@@ -76,9 +74,3 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({ projects, setFilteredProj
 };
 
 export default ProjectFilter;
-
-
-
-
-
-

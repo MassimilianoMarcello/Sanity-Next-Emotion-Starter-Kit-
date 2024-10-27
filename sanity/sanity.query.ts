@@ -5,36 +5,34 @@ import { Project } from "@/types/projects";
 // import { AboutMe } from "@/types/AboutMe";
 
 export async function getProjects(): Promise<Project[]> {
-  return client.fetch(
-    groq`*[_type == "project"]{
-name,
-    _id,
-     _key,
-"technologies": technologies[]-> {
-    _id,
-    name,
-    icon
-  },
-      importance,
-    _createdAt,
-    _updatedAt,
-   _type,
-   url,
-    githubUrl,
-   "slug": slug.current,
-    // 'content': content[].children[].text,
-    content,
-     'image' :image.asset->url,
-     'imageAlt':image.alt,
-  status, 
-   }`,
-    // {
-    //   next: {
-    //     revalidate: 63,
-    //   },
-    // }
-  );
-}
+    const projects = await client.fetch(
+      groq`*[_type == "project"]{
+        name,
+        _id,
+        _key,
+        "technologies": technologies[]-> {
+          _id,
+          name,
+          icon
+        },
+        importance,
+        _createdAt,
+        _updatedAt,
+        _type,
+        url,
+        githubUrl,
+        "slug": slug.current,
+        content,
+        'image': image.asset->url,
+        'imageAlt': image.alt,
+        status, 
+      }`
+    );
+  
+    console.log("Fetched Projects from Sanity:", projects); // Aggiungi questo log
+    return projects;
+  }
+  
 
 export async function getProject(slug: string): Promise<Project> {
   return client.fetch(
@@ -62,6 +60,7 @@ export async function getProject(slug: string): Promise<Project> {
       },
     }
   );
+
 }
 
 

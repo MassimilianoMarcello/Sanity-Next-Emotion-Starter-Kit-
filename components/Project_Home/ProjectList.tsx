@@ -1,6 +1,6 @@
 import React from 'react';
 import ProjectInfo from "./ProjectInfo";
-import TechnologiesUsed from "./TecnologiesUsed"; // Assicurati che il nome del file sia corretto
+import TechnologiesUsed from "./TecnologiesUsed";
 import { PortableText } from '@portabletext/react';
 import styles from "./ProjectList.module.scss"; 
 
@@ -15,7 +15,7 @@ interface Project {
   image: string;
   imageAlt: string;
   content: any[];
-  technologies: Technology[]; // Cambiato in array di Technology
+  technologies: Technology[];
   name: string;
   githubUrl: string;
   url: string;
@@ -30,25 +30,28 @@ interface ProjectListProps {
 }
 
 const ProjectList: React.FC<ProjectListProps> = ({ projects, openProjectId, toggleProjectInfo }) => {
-    console.log(projects);
+    console.log("Projects received in ProjectList:", projects);
+  
+    if (projects.length === 0) {
+      return <p>No projects available.</p>;
+    }
+  
     return (
       <div className={styles.projectContainer}> 
         {projects.map((project) => (
           <div
             key={project._id}
-            className={`${styles.projectCard} ${project.importance === "main" ? styles.mainProject : ""}`} // Aggiungi una classe per il progetto principale
+            className={`${styles.projectCard} ${project.importance === "main" ? styles.mainProject : ""}`}
             onClick={() => toggleProjectInfo(project._id)}
           >
             <div className={styles.boxImageTextProject}>
               <h3>{project.name}</h3>
-              
               <img className={styles.projectImage} src={project.image} alt={project.imageAlt} />
               <div className={styles.portableStyle}>
                 <PortableText value={project.content[0]} />
               </div>
             </div>
-            <TechnologiesUsed technologies={project.technologies} /> {/* Assicurati che questo funzioni con il nuovo tipo */}
-            {/* Mostra le info del progetto solo se il progetto è aperto */}
+            <TechnologiesUsed technologies={project.technologies} />
             {openProjectId === project._id && (
               <div className={styles.infoBubble}>
                 <ProjectInfo project={project} openProjectId={null} />
@@ -60,6 +63,8 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects, openProjectId, togg
     );
 };
 
-export default ProjectList;
+// Usando React.memo per evitare renderizzazioni non necessarie
+export default React.memo(ProjectList);
+
 
 

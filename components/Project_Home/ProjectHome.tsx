@@ -21,14 +21,14 @@ export default function Home() {
     };
   
     useEffect(() => {
-      const fetchProjects = async () => {
-        const projectsData: Project[] = await getProjects();
-        console.log("Fetched Projects:", projectsData)
-        setProjects(projectsData);
-        setFilteredProjects(projectsData);
-      };
-      fetchProjects();
-    }, []);
+        const fetchProjects = async () => {
+          const projectsData: Project[] = await getProjects();
+          console.log("Fetched Projects:", projectsData); // Questo funziona
+          setProjects(projectsData);
+          setFilteredProjects(projectsData); // Assicurati di filtrare qui
+        };
+        fetchProjects();
+      }, []);
   
     return (
       <section className="home-section">
