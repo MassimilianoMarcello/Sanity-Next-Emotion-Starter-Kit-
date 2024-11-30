@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/ΩFooter/Footer";
 // import "./page.module.scss"; 
 import "./main.module.scss"; 
 
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -3,11 +3,14 @@
     background-color: $primary-color;
     padding: $spacing-unit;
     .navbar-content {
+      background-color: white;
       @include flex-center;
       justify-content: space-between;
       .logo {
+
         img {
-          height: 40px;
+          height: 70px;
+          // width: 20px;
         }
       }
       .navbar-links {
