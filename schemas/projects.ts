@@ -73,6 +73,14 @@ const project = {
         }
       },
       {
+        name: "challenges",
+        title: "Challenges Analysis",
+        type: "reference",
+        to: [{ type: "blog" }],
+        description: "Reference to the blog page analyzing challenges",
+      },
+      
+      {
         name: "createdAt",
         title: "Created At",
         type: "datetime",
