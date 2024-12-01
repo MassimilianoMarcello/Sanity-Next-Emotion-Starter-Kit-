@@ -94,13 +94,19 @@ const project = {
                 name: "slug",
                 title: "Slug",
                 type: "slug",
-                options: { source: "title" },
+                options: { source: "name" }
               },
               {
                 name: "link",
                 title: "Link",
                 type: "url",
                 description: "Optional link to a blog post or section",
+              },
+              {
+                name: "content",
+                title: "Content",
+                type: "array",
+                of: [{ type: "block" }]
               },
             ],
           },

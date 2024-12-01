@@ -30,7 +30,9 @@ export async function getProjects(): Promise<Project[]> {
        "challenges": challenges[] {
         _id,
         title,
-        "slug": slug.current
+        "slug": slug.current,
+        content,
+        description
       }
       }`
     );
@@ -61,7 +63,9 @@ export async function getProject(slug: string): Promise<Project> {
     "challenges": challenges[] {
         _id,
         title,
-        "slug": slug.current
+        "slug": slug.current,
+        content,
+        description
       }
  }`,
     { slug },
