@@ -1,5 +1,4 @@
 import { Project } from "@/types/projects";
-import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import styles from "./ProjectInfo.module.scss";
 
@@ -21,19 +20,12 @@ const ProjectInfos: React.FC<ProjectInfosProps> = ({ project, openProjectId }) =
         <ul className={styles.challengesList}>
           <h4>Challenges Faced:</h4>
           {project.challenges.map((challenge) => {
-            // Controllo per il caso in cui lo slug sia nullo o indefinito
-            if (!challenge.slug || !challenge.slug.current) {
-              return (
-                <li key={challenge._id}>
-                  <span>{challenge.title} (No link available)</span>
-                </li>
-              );
-            }
+            // Genera lo stesso ID basato sul titolo della challenge
+            const challengeId = `challenge-${challenge.title.replace(/\s+/g, '-').toLowerCase()}`;
 
-            // Renderizza il link solo se lo slug è valido
             return (
               <li key={challenge._id}>
-                <Link href={`/challenges/${challenge.slug.current}`}>
+                <Link href={`/projects/${project.slug}#${challengeId}`}>
                   {challenge.title}
                 </Link>
               </li>
@@ -62,6 +54,7 @@ const ProjectInfos: React.FC<ProjectInfosProps> = ({ project, openProjectId }) =
 };
 
 export default ProjectInfos;
+
 
 
 
