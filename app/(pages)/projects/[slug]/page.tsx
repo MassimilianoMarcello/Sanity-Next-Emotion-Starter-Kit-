@@ -37,7 +37,6 @@ export default async function Project({ params }: Props) {
           </div>
         </div>
         <div className={styles.projectDescription}>
-          {/* Assicurati che project.content sia definito prima di renderizzarlo */}
           {project.content ? (
             <PortableText value={project.content} />
           ) : (
@@ -51,13 +50,18 @@ export default async function Project({ params }: Props) {
           <h4>Challenges Index:</h4>
           <ul className={styles.challengesList}>
             {project.challenges.map((challenge) => {
-              // Verifica se l'`id` è univoco e valido
+              // Genera un ID unico basato sul titolo della challenge
+              const challengeId = `challenge-${challenge.title.replace(/\s+/g, '-').toLowerCase()}`;
+
               return (
                 <li key={challenge._id}>
-                  <a href={`#challenge-${challenge._id}`} onClick={(e) => {
-                    e.preventDefault(); // Impedisce il comportamento di default se necessario
-                    document.getElementById(`challenge-${challenge._id}`)?.scrollIntoView({ behavior: 'smooth' });
-                  }}>
+                  <a
+                    href={`#${challengeId}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById(challengeId)?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
                     {challenge.title}
                   </a>
                 </li>
@@ -67,24 +71,28 @@ export default async function Project({ params }: Props) {
 
           {/* Mostra i dettagli delle sfide sotto l'indice */}
           <div className={styles.challengeDetails}>
-            {project.challenges.map((challenge) => (
-              <div
-                id={`challenge-${challenge._id}`}
-                key={challenge._id}
-                className={styles.challengeItem}
-              >
-                <h5>{challenge.title}</h5>
-                {challenge.description && <p>{challenge.description}</p>}
-                {challenge.link && (
-                  <p>
-                    <a href={challenge.link} target="_blank" rel="noopener noreferrer">
-                      Read more about this challenge
-                    </a>
-                  </p>
-                )}
-                {challenge.content && <PortableText value={challenge.content} />}
-              </div>
-            ))}
+            {project.challenges.map((challenge) => {
+              const challengeId = `challenge-${challenge.title.replace(/\s+/g, '-').toLowerCase()}`;
+
+              return (
+                <div
+                  id={challengeId}
+                  key={challenge._id}
+                  className={styles.challengeItem}
+                >
+                  <h5>{challenge.title}</h5>
+                  {challenge.description && <p>{challenge.description}</p>}
+                  {challenge.link && (
+                    <p>
+                      <a href={challenge.link} target="_blank" rel="noopener noreferrer">
+                        Read more about this challenge
+                      </a>
+                    </p>
+                  )}
+                  {challenge.content && <PortableText value={challenge.content} />}
+                </div>
+              );
+            })}
           </div>
         </div>
       ) : (
@@ -93,6 +101,7 @@ export default async function Project({ params }: Props) {
     </div>
   );
 }
+
 
 
 
