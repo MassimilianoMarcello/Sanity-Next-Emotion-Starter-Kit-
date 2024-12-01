@@ -17,7 +17,9 @@
         display: flex;
         gap: $spacing-unit;
         .nav-link {
-          color: white;
+          color: $primary-color; 
+          text-decoration: none;
+          margin-right: 1rem;
           padding: 8px;
           &:hover {
             color: $secondary-color;
