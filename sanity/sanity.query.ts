@@ -26,7 +26,12 @@ export async function getProjects(): Promise<Project[]> {
         content,
         'image': image.asset->url,
         'imageAlt': image.alt,
-        status, 
+        status,
+       "challenges": challenges[] {
+        _id,
+        title,
+        "slug": slug.current
+      }
       }`
     );
   
@@ -53,7 +58,12 @@ export async function getProject(slug: string): Promise<Project> {
     name,
     icon
   },
-    }`,
+    "challenges": challenges[] {
+        _id,
+        title,
+        "slug": slug.current
+      }
+ }`,
     { slug },
     {
       next: {

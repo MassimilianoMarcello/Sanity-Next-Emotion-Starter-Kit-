@@ -6,6 +6,13 @@ export interface Technology {
     slug: string;
   
   }
+  export interface Challenge {
+    _id: string;
+    title: string;
+    description: string;
+    slug: { current: string }; // Sanity genera spesso slug in questo formato
+    link?: string; // Link opzionale
+  }
 export type Project = {
   _id: string;
   _key: string;
@@ -14,7 +21,7 @@ export type Project = {
   _createdAt: Date;
   _updatedAt: Date; 
   name: string;
-  slug: string;
+  slug: {current:string};
   image: string;
   imageAlt: string;
   status: string;
@@ -22,4 +29,5 @@ export type Project = {
 url: string;
   content: PortableTextBlock[];
   githubUrl: string;
+  challenges?: Challenge[];
 };

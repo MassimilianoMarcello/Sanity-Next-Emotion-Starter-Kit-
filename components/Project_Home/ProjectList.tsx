@@ -2,6 +2,7 @@ import React from 'react';
 import ProjectInfo from "./ProjectInfo";
 import TechnologiesUsed from "./TecnologiesUsed";
 import { PortableText } from '@portabletext/react';
+import {Project} from '@/types/projects';
 import styles from "./ProjectList.module.scss"; 
 import  '../../app/main.module.scss';
 
@@ -11,18 +12,7 @@ interface Technology {
   slug: string;
 }
 
-interface Project {
-  _id: string;
-  image: string;
-  imageAlt: string;
-  content: any[];
-  technologies: Technology[];
-  name: string;
-  githubUrl: string;
-  url: string;
-  slug: string;
-  importance: string;
-}
+
 
 interface ProjectListProps {
   projects: Project[];

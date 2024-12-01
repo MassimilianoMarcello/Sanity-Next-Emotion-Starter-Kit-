@@ -1,4 +1,5 @@
 "use client";
+
 import { getProject } from "@/sanity/sanity.query";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
@@ -9,7 +10,13 @@ type Props = {
 };
 
 export default async function Project({ params }: Props) {
+  // Recupera il progetto dalla funzione di query
   const project = await getProject(params.slug);
+
+  // Verifica se il progetto è stato trovato
+  if (!project) {
+    return <div>Project not found.</div>;
+  }
 
   return (
     <div className={styles.projectContainer}>
@@ -19,7 +26,12 @@ export default async function Project({ params }: Props) {
           <h1 className={styles.titleProject}>{project.name}</h1>
         </div>
         <div className={styles.projectDescription}>
-          <PortableText value={project.content} />
+          {/* Assicurati che project.content sia definito prima di renderizzarlo */}
+          {project.content ? (
+            <PortableText value={project.content} />
+          ) : (
+            <p>No content available for this project.</p>
+          )}
         </div>
       </div>
 
@@ -31,9 +43,10 @@ export default async function Project({ params }: Props) {
           <Link href={project.url}>Visit Website</Link>
         </div>
         <div className={styles.styledButton}>
-          <Link href={`/projects`}>Return</Link>
+          <Link href={`/`}>Return</Link>
         </div>
       </div>
     </div>
   );
 }
+
