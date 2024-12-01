@@ -19,12 +19,7 @@ const challenge = {
         type: "slug",
         options: { source: "title" }
       },
-      {
-        name: "link",
-        title: "Link",
-        type: "url",
-        description: "Optional link to a blog post or section"
-      },
+
       {
         name: "content",
         title: "Content",

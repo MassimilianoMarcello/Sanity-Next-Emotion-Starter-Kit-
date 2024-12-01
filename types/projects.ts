@@ -11,7 +11,7 @@ export interface Technology {
     title: string;
     description: string;
     slug: { current: string }; // Sanity genera spesso slug in questo formato
-    link?: string; // Link opzionale
+  
     content: PortableTextBlock[];
   }
 export type Project = {

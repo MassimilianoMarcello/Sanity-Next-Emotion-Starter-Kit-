@@ -70,7 +70,7 @@ export default async function Project({ params }: Props) {
           </ul>
 
           {/* Mostra i dettagli delle sfide sotto l'indice */}
-          <div className={styles.challengeDetails}>
+           <div className={styles.challengeDetails}>
             {project.challenges.map((challenge) => {
               const challengeId = `challenge-${challenge.title.replace(/\s+/g, '-').toLowerCase()}`;
 
@@ -82,18 +82,12 @@ export default async function Project({ params }: Props) {
                 >
                   <h5>{challenge.title}</h5>
                   {challenge.description && <p>{challenge.description}</p>}
-                  {challenge.link && (
-                    <p>
-                      <a href={challenge.link} target="_blank" rel="noopener noreferrer">
-                        Read more about this challenge
-                      </a>
-                    </p>
-                  )}
+           
                   {challenge.content && <PortableText value={challenge.content} />}
                 </div>
               );
             })}
-          </div>
+          </div> 
         </div>
       ) : (
         <p>No challenges faced for this project.</p>
