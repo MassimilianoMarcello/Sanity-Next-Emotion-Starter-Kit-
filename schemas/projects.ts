@@ -78,41 +78,11 @@ const project = {
         type: "array",
         of: [
           {
-            type: "object",
-            fields: [
-              {
-                name: "title",
-                title: "Title",
-                type: "string",
-              },
-              {
-                name: "description",
-                title: "Description",
-                type: "text",
-              },
-              {
-                name: "slug",
-                title: "Slug",
-                type: "slug",
-                options: { source: "name" }
-              },
-              {
-                name: "link",
-                title: "Link",
-                type: "url",
-                description: "Optional link to a blog post or section",
-              },
-              {
-                name: "content",
-                title: "Content",
-                type: "array",
-                of: [{ type: "block" }]
-              },
-            ],
-          },
-        ],
+            type: "reference",
+            to: [{ type: "challenge" }]
+          }
+        ]
       },
-      
       
       {
         name: "createdAt",

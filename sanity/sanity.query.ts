@@ -27,7 +27,7 @@ export async function getProjects(): Promise<Project[]> {
         'image': image.asset->url,
         'imageAlt': image.alt,
         status,
-       "challenges": challenges[] {
+      "challenges": challenges[]-> {
         _id,
         title,
         "slug": slug.current,
@@ -35,6 +35,7 @@ export async function getProjects(): Promise<Project[]> {
         description
       }
       }`
+
     );
   
     console.log("Fetched Projects from Sanity:", projects); // Aggiungi questo log
@@ -60,7 +61,7 @@ export async function getProject(slug: string): Promise<Project> {
     name,
     icon
   },
-    "challenges": challenges[] {
+   "challenges": challenges[]-> {
         _id,
         title,
         "slug": slug.current,
