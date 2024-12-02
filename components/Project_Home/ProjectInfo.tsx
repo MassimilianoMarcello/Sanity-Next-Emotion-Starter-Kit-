@@ -21,6 +21,8 @@ const ProjectInfos: React.FC<ProjectInfosProps> = ({ project, openProjectId }) =
           <h4>Challenges Faced:</h4>
           {project.challenges.map((challenge) => {
             // Genera lo stesso ID basato sul titolo della challenge
+            // Converte il titolo di una challenge in una stringa "slug-friendly", 
+            // sostituendo gli spazi con trattini (-) e rendendola tutta in minuscolo
             const challengeId = `challenge-${challenge.title.replace(/\s+/g, '-').toLowerCase()}`;
 
             return (
