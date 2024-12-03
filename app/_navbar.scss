@@ -1,5 +1,6 @@
 // _navbar.scss
 .navbar {
+  
     background-color: $primary-color;
     padding: $spacing-unit;
     .navbar-content {
@@ -15,6 +16,9 @@
       }
       .navbar-links {
         display: flex;
+  font-family:var(--font-zeitung-pro) ;
+  font-weight: 300;
+
         gap: $spacing-unit;
         .nav-link {
           color: $primary-color; 
