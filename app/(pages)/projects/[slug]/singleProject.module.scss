@@ -2,94 +2,138 @@
 
 
 
-.projectContainer {
-  height: auto;
-  width: 50%;
-  margin: 5rem auto;
-  margin-top: 7rem;
-  background-color: $background-color;
-  border-right: 4px solid $primary-color;
-  border-left: 4px solid $primary-color;
+// singleProject.module.scss
 
-  @media screen and (max-width: 600px) {
-    width: 100%;
-  }
+.projectContainer {
+  background-color: #ffffff; // Sfondo bianco
+  border: 1px solid #e0e0e0; // Bordi sottili grigi
+  border-radius: 8px; // Angoli arrotondati
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Leggera ombra
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+  overflow: hidden;
 }
 
 .contentWrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 20px;
 }
 
 .titleContainer {
-  text-align: center;
-  margin-top: 4rem;
-  border-bottom: 4px solid $primary-color;
+  border-bottom: 2px solid #e0e0e0; // Linea sottile tra il titolo e il contenuto
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .howIMade {
-//   font-family: $primary-font; 
-  background-color: $secondary-color;
-  font-size: 5rem;
-  margin-top: 2rem;
-  padding-top: 1rem;
-  color: $title-color;
-  margin-bottom: 0;
+  color: #5f6368; // Colore grigio scuro
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .titleProject {
-//   font-family: $primary-font; 
-  background-color: $title-color;
-  font-size: 5rem;
-  margin-top: 0;
-  padding: 1rem;
-  color: $secondary-color;
-  margin-bottom: 0;
-}
-
-.projectDescription {
-  margin: 1rem 3rem;
-  color: $text-color;
-  line-height: 1.6;
-  letter-spacing: 0.05em;
-  margin-top: 3rem;
-  font-size: 1.3rem;
+  color: #1f1f1f; // Colore nero/grigio scuro
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
 .buttons {
   display: flex;
-  align-items: center;
+  gap: 15px;
 }
 
 .styledButton {
+  background-color: #f1f1f1; // Sfondo chiaro per i pulsanti
+  color: #5f6368; // Testo scuro
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 10px 15px;
+  text-align: center;
   text-decoration: none;
-//   font-family: $headers-font; 
-  letter-spacing: 0.07rem;
-  padding: 0.4rem 1rem;
-  border-radius: 0.5rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  font-weight: 700;
-  color: $text-color;
-  background-color: $accent-color;
-  border-right: 4px solid $primary-color;
-  border-bottom: 4px solid $primary-color;
-  display: inline-block;
-  margin-left: 0.5rem;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
 
-  a {
-    text-decoration: none;
-    text-align: center;
-    font-weight: 700;
-    font-size: 0.8rem;
-    color: $text-color;
-  }
+.styledButton:hover {
+  background-color: #e0e0e0; // Colore di hover per i pulsanti
+  border-color: #b0b0b0; // Colore di hover per il bordo
+}
 
-  &:hover {
-    background-color: $highlight-color;
-    border-right: 4px solid $secondary-color;
-    border-bottom: 4px solid $secondary-color;
-  }
+.projectDescription {
+  color: #333333; // Colore del testo per la descrizione
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.portableText {
+  color: #333333;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 15px 0;
+}
+
+.portableText h2,
+.portableText h3,
+.portableText h4,
+.portableText h5 {
+  color: #1f1f1f;
+  margin-top: 20px;
+}
+
+.portableText p {
+  margin-bottom: 15px;
+}
+
+.challengesSection {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #e0e0e0;
+}
+
+.challengesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkContainer {
+  margin-bottom: 10px;
+}
+
+.linkContainer a {
+  color: #1f1f1f;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.linkContainer a:hover {
+  color: #5f6368;
+}
+
+.challengeDetails {
+  margin-top: 20px;
+}
+
+.challengeItem {
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.challengeItem:last-child {
+  border-bottom: none;
+}
+
+.challengeItem h5 {
+  color: #1f1f1f;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.challengeItem p {
+  font-size: 1rem;
+  color: #666666;
 }
