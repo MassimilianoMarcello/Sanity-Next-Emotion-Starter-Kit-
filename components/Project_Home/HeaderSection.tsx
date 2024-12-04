@@ -13,7 +13,7 @@ interface HeaderSectionProps {
 const HeaderSection: React.FC<HeaderSectionProps> = ({  setFilteredProjects, setOpenProjectId }) => {
   return (
     <div className="header-section">
-      {/* Il tuo codice qui */}
+    Hallo (HeaderSection)
     </div>
   );
 };

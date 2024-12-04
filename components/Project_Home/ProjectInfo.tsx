@@ -40,12 +40,12 @@ const ProjectInfos: React.FC<ProjectInfosProps> = ({ project, openProjectId }) =
 
       <div className={styles.textDetails}>
         <div className={styles.buttons}>
-          <div className={styles.styledButton}>
+          {/* <div className={styles.styledButton}>
             <Link href={project.githubUrl}>GitHub</Link>
           </div>
           <div className={styles.styledButton}>
             <Link href={project.url}>Visit Website</Link>
-          </div>
+          </div> */}
           <div className={styles.styledButton}>
             <Link href={`/projects/${project.slug}`}>Click for Details</Link>
           </div>

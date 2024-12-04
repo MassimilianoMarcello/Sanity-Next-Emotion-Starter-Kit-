@@ -53,7 +53,7 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
 
   return (
     <div className="filter-container">
-      <MediumBlueBorder />
+      {/* <MediumBlueBorder /> */}
       <section className="filter">
         {uniqueTechnologies.map((technology) => (
           <button

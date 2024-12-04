@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './TechnologiesUsed.module.scss';
 
 interface Technology {
   _id: string;
@@ -13,8 +14,8 @@ interface TechnologiesUsedProps {
 const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({ technologies }) => {
   return (
     <div>
-      <h4>Technologies Used:</h4>
-      <ul>
+   
+      <ul className={styles.technologiesList}>
         {technologies.map((tech) => (
           <li key={tech._id}>{tech.name}</li> // Usa tech.name per visualizzare il nome della tecnologia
         ))}
