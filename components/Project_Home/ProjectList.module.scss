@@ -1,118 +1,48 @@
 @import '../../app/main.module.scss';
 
-
-
-.projectContainer {
+.projectListContainer {
   display: flex;
+  flex-direction: column;
+  gap: 3rem; // Spaziatura tra le sezioni delle categorie
+}
 
-  flex-wrap: wrap;
+.categorySection {
+  display: flex;
+  align-items: flex-start; // Allinea l'etichetta in cima ai progetti
   gap: 2rem;
-  justify-content: center;
-  padding: 2rem;
+}
+
+.categoryLabel {
+  position: sticky; // Rimane fissa mentre scorri
+  top: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $primary-color;
   background-color: $background-color;
+  padding: 1rem;
+  width: 150px; // Larghezza della colonna fissa
+  text-align: right;
+}
+
+.projectCards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; // Spaziatura tra i progetti
+  flex: 1; // Occupa il resto dello spazio disponibile
 }
 
 .projectCard {
-  display: grid;
-  // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto auto auto;
-  width: 80%;
-  max-height: 350px;
+  display: flex;
+  flex-wrap: wrap;
   background-color: $secondary-color;
   border: 1px solid $neutral-gray;
   border-radius: 8px;
+  padding: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
-  cursor: pointer;
 
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
-
-  .boxImageProject {
-    grid-column: 1 / 2;
-    grid-row:1/4 ;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: left;
-    // padding: 1rem;
-
-    .projectImage {
-      width:  100%;
-      height: 90%;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }}
-    .boxTextProject {
-      grid-column: 3/ 5;
-      grid-row:1/3 ;
-    .portableStyle {
-      padding: 1rem;
-      color: $text-color;
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-  }
-  .technologiesUsed{
-    grid-column: 1/5;
-    grid-row: 4/5;
-background-color: red;
-  }
-  .visitRepoAndWebsiteButtons {
-    grid-column: 4/5;
-    grid-row: 1/2;
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    padding: 1rem;
-    .styledButton{
-      background-color: $primary-color;
-      color: $text-color;
-      border: 1px solid $primary-color;
-      border-radius: 4px;
-      padding: 10px 15px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
-      &:hover {
-        background-color: darken($primary-color, 10%);
-        border-color: darken($primary-color, 10%);
-      }
-      a{
-        color: $text-color;
-        text-decoration: none;
-      }
-    }
-  }
 }
-
-.projectCard {
-    position: relative; // Necessario per posizionare la bubble rispetto alla card
-    cursor: pointer; // Cambia il cursore quando si passa sopra
-  
-    .infoBubble {
-      position: absolute;
-      top: -10px; // Posiziona sopra la scheda
-      left: 50%;
-      transform: translateX(-50%); // Centra la bubble
-      background-color: white; // Colore di sfondo
-      border: 1px solid #ccc; // Bordo del quadrato
-      padding: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Ombra per un effetto di profondità
-      z-index: 10; // Assicurati che sia sopra altri elementi
-      border-radius: 4px; // Angoli arrotondati
-  
-      
-// y  questo cambia lo stile dei progetti che hanno una categoria main nello schema
-      &.mainProject {
-        // Stile specifico per il progetto principale
-        width: 100%; // Occupare tutta la larghezza
-        height: 100%; // Occupare l'altezza desiderata
-        // Altri stili come padding, margin, ecc.
-      }
-    }
-  }
-  
