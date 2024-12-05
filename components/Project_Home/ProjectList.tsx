@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ProjectInfo from "./ProjectInfo";
 import TechnologiesUsed from "./TechnologiesUsed";
 import { PortableText } from "@portabletext/react";
@@ -8,16 +8,22 @@ import Link from "next/link";
 
 interface ProjectListProps {
   projects: Project[];
-  openProjectId: string | null;
-  toggleProjectInfo: (id: string) => void;
 }
 
-const ProjectList: React.FC<ProjectListProps> = ({
-  projects,
-  openProjectId,
-  toggleProjectInfo,
-}) => {
-  // Raggruppare i progetti per importanza
+const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
+  const [openProjectId, setOpenProjectId] = useState<string | null>(null);
+
+  const toggleProjectInfo = (projectId: string) => {
+    // Mostra o nasconde il progetto al clic
+    setOpenProjectId((prevId) => (prevId === projectId ? null : projectId));
+  };
+
+  const handleMouseLeave = () => {
+    // Nasconde il progetto quando il mouse esce dalla card
+    setOpenProjectId(null);
+  };
+
+  // Raggruppa i progetti per importanza
   const groupedProjects = projects.reduce((acc, project) => {
     if (!acc[project.importance]) {
       acc[project.importance] = [];
@@ -47,6 +53,7 @@ const ProjectList: React.FC<ProjectListProps> = ({
                 key={project._id}
                 className={styles.projectCard}
                 onClick={() => toggleProjectInfo(project._id)}
+                onMouseLeave={handleMouseLeave}
               >
                 <div className={styles.boxTextProject}>
                   <h3>{project.name}</h3>
@@ -74,7 +81,7 @@ const ProjectList: React.FC<ProjectListProps> = ({
                 </div>
                 {openProjectId === project._id && (
                   <div className={styles.infoBubble}>
-                    <ProjectInfo project={project} openProjectId={null} />
+                    <ProjectInfo project={project} openProjectId={openProjectId} />
                   </div>
                 )}
               </div>
@@ -87,6 +94,8 @@ const ProjectList: React.FC<ProjectListProps> = ({
 };
 
 export default React.memo(ProjectList);
+
+
 
 
 

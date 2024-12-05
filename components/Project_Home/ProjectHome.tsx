@@ -44,8 +44,8 @@ export default function Home() {
         />
         <ProjectList
           projects={filteredProjects}
-          openProjectId={openProjectId}
-          toggleProjectInfo={toggleProjectInfo}
+    
+        
         />
       </section>
     );
