@@ -11,8 +11,8 @@
   align-items: flex-start;
   gap: 2rem;
   opacity: 0; // Valore iniziale per l'animazione
-  transform: translateY(20px); // Spostamento iniziale
-  animation: fadeInUp 0.5s ease forwards; // Definizione animazione
+  transform: translateY(20px); 
+  animation: fadeInUp 0.5s ease forwards; 
 }
 
 .categoryLabel {
@@ -54,11 +54,11 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateX(200px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 // .projectListContainer {
@@ -66,14 +66,18 @@
 
 
 
-// .infoBubble {
-//   background-color: white;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100vh;
-//   z-index: 1000; 
+.infoBubble {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000; 
+  border: 1px solid gray;
+  border-radius: 8px;
 
-// }
+  animation: fadeInUp 0.5s ease forwards; 
+
+}
 
