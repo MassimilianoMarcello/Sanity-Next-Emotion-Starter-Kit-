@@ -1,6 +1,6 @@
 import React from "react";
 import ProjectInfo from "./ProjectInfo";
-import TechnologiesUsed from "./TecnologiesUsed";
+import TechnologiesUsed from "./TechnologiesUsed";
 import { PortableText } from "@portabletext/react";
 import { Project } from "@/types/projects";
 import styles from "./ProjectList.module.scss";
@@ -34,8 +34,12 @@ const ProjectList: React.FC<ProjectListProps> = ({
 
   return (
     <div className={styles.projectListContainer}>
-      {sortedCategories.map((category) => (
-        <div key={category} className={styles.categorySection}>
+      {sortedCategories.map((category, index) => (
+        <div
+          key={category}
+          className={`${styles.categorySection} ${styles.fadeIn}`}
+          style={{ animationDelay: `${index * 0.2}s` }}
+        >
           <div className={styles.categoryLabel}>{category}</div>
           <div className={styles.projectCards}>
             {groupedProjects[category].map((project) => (
@@ -83,5 +87,6 @@ const ProjectList: React.FC<ProjectListProps> = ({
 };
 
 export default React.memo(ProjectList);
+
 
 

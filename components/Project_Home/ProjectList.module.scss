@@ -3,32 +3,35 @@
 .projectListContainer {
   display: flex;
   flex-direction: column;
-  gap: 3rem; // Spaziatura tra le sezioni delle categorie
+  gap: 3rem;
 }
 
 .categorySection {
   display: flex;
-  align-items: flex-start; // Allinea l'etichetta in cima ai progetti
+  align-items: flex-start;
   gap: 2rem;
+  opacity: 0; // Valore iniziale per l'animazione
+  transform: translateY(20px); // Spostamento iniziale
+  animation: fadeInUp 0.5s ease forwards; // Definizione animazione
 }
 
 .categoryLabel {
-  position: sticky; // Rimane fissa mentre scorri
+  position: sticky;
   top: 0;
   font-size: 1.5rem;
   font-weight: bold;
   color: $primary-color;
   background-color: $background-color;
   padding: 1rem;
-  width: 150px; // Larghezza della colonna fissa
+  width: 150px;
   text-align: right;
 }
 
 .projectCards {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; // Spaziatura tra i progetti
-  flex: 1; // Occupa il resto dello spazio disponibile
+  gap: 1.5rem;
+  flex: 1;
 }
 
 .projectCard {
@@ -44,5 +47,17 @@
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Animazione fade-in e slide-up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
