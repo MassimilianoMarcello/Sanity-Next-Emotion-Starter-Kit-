@@ -4,18 +4,29 @@ import { Project } from "@/types/projects";
 
 
 
-interface HeaderSectionProps {
-  projects: Project[];
-  setFilteredProjects: React.Dispatch<React.SetStateAction<Project[]>>;
-  setOpenProjectId: React.Dispatch<React.SetStateAction<string | null>>; // Assicurati che sia string | null
+// interface HeaderSectionProps {
+  // projects: Project[];
+  // setFilteredProjects: React.Dispatch<React.SetStateAction<Project[]>>;
+  // setOpenProjectId: React.Dispatch<React.SetStateAction<string | null>>; 
+// }
+
+// const HeaderSection: React.FC<HeaderSectionProps> = ({  setFilteredProjects, setOpenProjectId }) => {
+
+//   return (
+//     <div className="header-section">
+//     Hallo (HeaderSection)
+//     </div>
+//   );
+// };
+
+// export default HeaderSection;
+
+
+
+const HeaderSection = () => {
+  return (
+    <div>HeaderSection</div>
+  )
 }
 
-const HeaderSection: React.FC<HeaderSectionProps> = ({  setFilteredProjects, setOpenProjectId }) => {
-  return (
-    <div className="header-section">
-    Hallo (HeaderSection)
-    </div>
-  );
-};
-
-export default HeaderSection;
+export default HeaderSection

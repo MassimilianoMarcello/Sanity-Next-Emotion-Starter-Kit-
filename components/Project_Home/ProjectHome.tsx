@@ -33,9 +33,9 @@ export default function Home() {
     return (
       <section className="home-section">
         <HeaderSection
-          projects={projects}
-          setFilteredProjects={setFilteredProjects}
-          setOpenProjectId={setOpenProjectId}
+          // projects={projects}
+          // setFilteredProjects={setFilteredProjects}
+          // setOpenProjectId={setOpenProjectId}
         />
         <ProjectFilter
           projects={projects}
