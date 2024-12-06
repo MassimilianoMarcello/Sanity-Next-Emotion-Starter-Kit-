@@ -12,15 +12,25 @@ interface ProjectListProps {
 
 const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
   const [openProjectId, setOpenProjectId] = useState<string | null>(null);
-
+  const [isExiting, setIsExiting] = useState(false);
   const toggleProjectInfo = (projectId: string) => {
-    // Mostra o nasconde il progetto al clic
-    setOpenProjectId((prevId) => (prevId === projectId ? null : projectId));
+    if (openProjectId === projectId) {
+      setIsExiting(true);
+      setTimeout(() => {
+        setOpenProjectId(null);
+        setIsExiting(false);
+      }, 500); // Tempo dell'animazione
+    } else {
+      setOpenProjectId(projectId);
+    }
   };
 
   const handleMouseLeave = () => {
-    // Nasconde il progetto quando il mouse esce dalla card
-    setOpenProjectId(null);
+    setIsExiting(true);
+    setTimeout(() => {
+      setOpenProjectId(null);
+      setIsExiting(false);
+    }, 100); // Tempo dell'animazione
   };
 
   // Raggruppa i progetti per importanza
@@ -80,7 +90,7 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
                   <TechnologiesUsed technologies={project.technologies} />
                 </div>
                 {openProjectId === project._id && (
-                  <div className={styles.infoBubble}>
+                  <div className={`${styles.infoBubble} ${isExiting ? styles.exit : ""}`}>
                     <ProjectInfo project={project} openProjectId={openProjectId} />
                   </div>
                 )}

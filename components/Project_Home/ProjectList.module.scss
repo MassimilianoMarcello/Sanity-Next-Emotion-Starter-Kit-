@@ -49,6 +49,8 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 }
+// .projectListContainer {
+//   position: relative; }
 
 /* Animazione fade-in e slide-up */
 @keyframes fadeInUp {
@@ -61,10 +63,46 @@
     transform: translateX(0);
   }
 }
-// .projectListContainer {
-//   position: relative; }
 
 
+
+
+// .infoBubble {
+//   background-color: white;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: 1000; 
+//   border: 1px solid gray;
+//   border-radius: 8px;
+
+//   animation: fadeInUp 0.5s ease forwards; 
+
+// }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+}
 
 .infoBubble {
   background-color: white;
@@ -76,8 +114,11 @@
   z-index: 1000; 
   border: 1px solid gray;
   border-radius: 8px;
-
   animation: fadeInUp 0.5s ease forwards; 
-
 }
+
+.infoBubble.exit {
+  animation: fadeOutDown 0.5s ease forwards;
+}
+
 
