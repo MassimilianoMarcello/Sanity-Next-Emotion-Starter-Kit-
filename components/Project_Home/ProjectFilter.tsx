@@ -12,20 +12,23 @@ interface ProjectFilterProps {
 const ProjectFilter: React.FC<ProjectFilterProps> = ({
   projects = [], // Impostiamo un array vuoto come default per evitare problemi
   setFilteredProjects,
-  setOpenProjectId
+  setOpenProjectId,
 }) => {
-  const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([]);
+  const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>(
+    []
+  );
 
   useEffect(() => {
     if (projects.length === 0) return;
 
-    const filteredProjects = selectedTechnologies.length === 0
-      ? projects
-      : projects.filter((project) =>
-          selectedTechnologies.every((tech) =>
-            project.technologies?.some((t) => t.name === tech)
-          )
-        );
+    const filteredProjects =
+      selectedTechnologies.length === 0
+        ? projects
+        : projects.filter((project) =>
+            selectedTechnologies.every((tech) =>
+              project.technologies?.some((t) => t.name === tech)
+            )
+          );
 
     setFilteredProjects(filteredProjects);
     setOpenProjectId(null);
@@ -43,12 +46,15 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
     setSelectedTechnologies([]);
   };
 
-  const uniqueTechnologies = useMemo(() =>
-    Array.from(new Set(
-      projects.flatMap((project) =>
-        project.technologies?.map((tech) => tech.name) || []
-      )
-    )),
+  const uniqueTechnologies = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          projects.flatMap(
+            (project) => project.technologies?.map((tech) => tech.name) || []
+          )
+        )
+      ),
     [projects]
   );
 
@@ -66,10 +72,7 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
             {technology}
           </button>
         ))}
-        <button
-          className={styles.clearButton}
-          onClick={handleClearSelection}
-        >
+        <button className={styles.clearButton} onClick={handleClearSelection}>
           Clear
         </button>
       </section>
@@ -81,4 +84,3 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
 };
 
 export default ProjectFilter;
-
