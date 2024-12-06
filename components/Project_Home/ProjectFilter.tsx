@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import NoProjectsMessage from "./NoProject";
-import MediumBlueBorder from "./MediuBlueBorder";
 import { Project } from "@/types/projects";
+import styles from "./ProjectFilter.module.scss";
 
 interface ProjectFilterProps {
   projects: Project[];
@@ -17,17 +17,18 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
   const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([]);
 
   useEffect(() => {
-    if (projects.length === 0) return; // Evita il filtro se non ci sono progetti
+    if (projects.length === 0) return;
 
-    const filteredProjects = projects.filter((project) =>
-      selectedTechnologies.every((tech) =>
-        project.technologies?.some((t) => t.name === tech)
-      )
-    );
+    const filteredProjects = selectedTechnologies.length === 0
+      ? projects
+      : projects.filter((project) =>
+          selectedTechnologies.every((tech) =>
+            project.technologies?.some((t) => t.name === tech)
+          )
+        );
 
     setFilteredProjects(filteredProjects);
     setOpenProjectId(null);
-    console.log("Filtered projects:", filteredProjects); // Controllo dello stato finale
   }, [selectedTechnologies, projects, setFilteredProjects, setOpenProjectId]);
 
   const handleToggleTechnology = (technology: string) => {
@@ -42,29 +43,35 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
     setSelectedTechnologies([]);
   };
 
-  const uniqueTechnologies = useMemo(() => 
+  const uniqueTechnologies = useMemo(() =>
     Array.from(new Set(
       projects.flatMap((project) =>
         project.technologies?.map((tech) => tech.name) || []
       )
-    )), 
+    )),
     [projects]
   );
 
   return (
-    <div className="filter-container">
-      {/* <MediumBlueBorder /> */}
-      <section className="filter">
+    <div className={styles.filterContainer}>
+      <section className={styles.filter}>
         {uniqueTechnologies.map((technology) => (
           <button
             key={technology}
             onClick={() => handleToggleTechnology(technology)}
-            className={`the-button ${selectedTechnologies.includes(technology) ? 'active' : ''}`}
+            className={`${styles.theButton} ${
+              selectedTechnologies.includes(technology) ? styles.active : ""
+            }`}
           >
             {technology}
           </button>
         ))}
-        <button className="clear-button" onClick={handleClearSelection}>Clear</button>
+        <button
+          className={styles.clearButton}
+          onClick={handleClearSelection}
+        >
+          Clear
+        </button>
       </section>
       {setFilteredProjects.length === 0 && selectedTechnologies.length > 0 && (
         <NoProjectsMessage handleClearSelection={handleClearSelection} />
@@ -74,3 +81,4 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
 };
 
 export default ProjectFilter;
+
