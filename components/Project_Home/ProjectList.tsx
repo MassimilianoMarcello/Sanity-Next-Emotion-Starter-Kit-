@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import ProjectInfo from "./ProjectInfo";
 import TechnologiesUsed from "./TechnologiesUsed";
 import { PortableText } from "@portabletext/react";
 import { Project } from "@/types/projects";
+import CategoryFilter from "./CategoryFilter";
 import styles from "./ProjectList.module.scss";
 import Link from "next/link";
 
@@ -13,6 +14,8 @@ interface ProjectListProps {
 const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
   const [openProjectId, setOpenProjectId] = useState<string | null>(null);
   const [isExiting, setIsExiting] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
   const toggleProjectInfo = (projectId: string) => {
     if (openProjectId === projectId) {
       setIsExiting(true);
@@ -33,8 +36,15 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
     }, 100); // Tempo dell'animazione
   };
 
-  // Raggruppa i progetti per importanza
-  const groupedProjects = projects.reduce((acc, project) => {
+  // Filtra i progetti in base alla categoria selezionata
+  const filteredProjects = useMemo(() => {
+    if (selectedCategory) {
+      return projects.filter((project) => project.importance === selectedCategory);
+    }
+    return projects;
+  }, [projects, selectedCategory]);
+
+  const groupedProjects = filteredProjects.reduce((acc, project) => {
     if (!acc[project.importance]) {
       acc[project.importance] = [];
     }
@@ -42,14 +52,19 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
     return acc;
   }, {} as Record<string, Project[]>);
 
-  // Ordina le categorie per l'ordine desiderato
   const importanceOrder = ["main", "secondary", "testing"];
-  const sortedCategories = importanceOrder.filter((category) =>
-    groupedProjects[category]
-  );
+  const sortedCategories = importanceOrder.filter((category) => groupedProjects[category]);
 
   return (
     <div className={styles.projectListContainer}>
+      {/* Filtro per categoria */}
+      <CategoryFilter
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        importanceOrder={importanceOrder}
+      />
+
+      {/* Lista dei progetti */}
       {sortedCategories.map((category, index) => (
         <div
           key={category}
@@ -58,7 +73,7 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
         >
           <div className={styles.categoryLabel}>{category}</div>
           <div className={styles.projectCards}>
-            {groupedProjects[category].map((project) => (
+            {groupedProjects[category]?.map((project) => (
               <div
                 key={project._id}
                 className={styles.projectCard}
@@ -90,7 +105,11 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
                   <TechnologiesUsed technologies={project.technologies} />
                 </div>
                 {openProjectId === project._id && (
-                  <div className={`${styles.infoBubble} ${isExiting ? styles.exit : ""}`}>
+                  <div
+                    className={`${styles.infoBubble} ${
+                      isExiting ? styles.exit : ""
+                    }`}
+                  >
                     <ProjectInfo project={project} openProjectId={openProjectId} />
                   </div>
                 )}
@@ -104,6 +123,8 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
 };
 
 export default React.memo(ProjectList);
+
+
 
 
 
