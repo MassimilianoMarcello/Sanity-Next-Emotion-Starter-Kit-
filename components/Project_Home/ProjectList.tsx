@@ -33,7 +33,7 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
     setTimeout(() => {
       setOpenProjectId(null);
       setIsExiting(false);
-    }, 100); // Tempo dell'animazione
+    }, 200); // Tempo dell'animazione
   };
 
   // Filtra i progetti in base alla categoria selezionata

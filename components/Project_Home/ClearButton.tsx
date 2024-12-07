@@ -1,13 +1,12 @@
-import React from "react";
+// import React from "react";
 
-// Definisci i tipi delle props per ClearButton
-interface ClearButtonProps {
-  onClick: () => void; // Funzione che verrà chiamata al click
-  children: React.ReactNode; // Contenuto del bottone
-}
+// interface ClearButtonProps {
+//   onClick: () => void; 
+//   children: React.ReactNode; 
+// }
 
-const ClearButton: React.FC<ClearButtonProps> = ({ onClick, children }) => {
-  return <button onClick={onClick}>{children}</button>;
-};
+// const ClearButton: React.FC<ClearButtonProps> = ({ onClick, children }) => {
+//   return <button onClick={onClick}>{children}</button>;
+// };
 
-export default ClearButton;
+// export default ClearButton;
