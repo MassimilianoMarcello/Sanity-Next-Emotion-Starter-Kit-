@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import ClearButton from "./ClearButton";
+// import ClearButton from "./ClearButton";
 import styles from "./NoProject.module.scss";
 
 // Definisci i tipi delle props per NoProjectsMessage
@@ -17,7 +17,7 @@ const NoProjectsMessage: React.FC<NoProjectsMessageProps> = ({ handleClearSelect
         width={120}
         height={120}
       />
-      <ClearButton onClick={handleClearSelection}>Clear</ClearButton>
+      {/* <ClearButton onClick={handleClearSelection}>Clear</ClearButton> */}
       <p>Oops! No projects with this tech combo yet. Check back soon!</p>
     </div>
   );

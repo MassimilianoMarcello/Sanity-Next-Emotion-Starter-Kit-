@@ -17,9 +17,15 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
   const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>(
     []
   );
+  const [localFilteredProjects, setLocalFilteredProjects] = useState<Project[]>(
+    projects
+  );
 
   useEffect(() => {
-    if (projects.length === 0) return;
+    if (projects.length === 0) {
+      setLocalFilteredProjects([]);
+      return;
+    }
 
     const filteredProjects =
       selectedTechnologies.length === 0
@@ -30,7 +36,8 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
             )
           );
 
-    setFilteredProjects(filteredProjects);
+    setLocalFilteredProjects(filteredProjects);
+    setFilteredProjects(filteredProjects); // Aggiorna lo stato esterno
     setOpenProjectId(null);
   }, [selectedTechnologies, projects, setFilteredProjects, setOpenProjectId]);
 
@@ -76,7 +83,8 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
           Clear
         </button>
       </section>
-      {setFilteredProjects.length === 0 && selectedTechnologies.length > 0 && (
+      {/* Controllo per mostrare NoProjectsMessage */}
+      {localFilteredProjects.length === 0 && selectedTechnologies.length > 0 && (
         <NoProjectsMessage handleClearSelection={handleClearSelection} />
       )}
     </div>
@@ -84,3 +92,4 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
 };
 
 export default ProjectFilter;
+
