@@ -1,4 +1,4 @@
-@import '../../app/main.module.scss';
+@import "../../app/main.module.scss";
 
 .projectListContainer {
   display: flex;
@@ -11,9 +11,11 @@
   align-items: flex-start;
   gap: 2rem;
   opacity: 0; // Valore iniziale per l'animazione
-  transform: translateY(20px); 
-  animation: fadeInUp 0.5s ease forwards; 
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
 }
+
+// .fadeIn {}
 
 .categoryLabel {
   position: sticky;
@@ -32,23 +34,29 @@
   flex-direction: column;
   gap: 1.5rem;
   flex: 1;
+  // background-color: gold;
+  border-top: 1px solid $primary-color;
+  padding-bottom: 2rem;
 }
 
 .projectCard {
-  display: flex;
-  flex-wrap: wrap;
-  // background-color: $secondary-color;
-  border-top: 1px solid $neutral-gray;
-  border-bottom: 1px solid $neutral-gray;
-  // border-radius: 8px;
-  padding: 1rem;
-  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+
+  // border-bottom: 1px solid $neutral-gray;
+
   transition: transform 0.2s ease;
+
+  margin-left: 20rem;
 
   &:hover {
     transform: translateY(-1px);
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   }
+  // background-color: red;
+  height: 100%;
+  position: relative;
+  padding: 2rem;
 }
 // .projectListContainer {
 //   position: relative; }
@@ -65,23 +73,88 @@
   }
 }
 
+.boxTextProject {
+  // background-color: yellow;
+  grid-column: 2 / 5;
+  grid-row: 1 / 4;
+  padding: 0 1rem;
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 200;
+    color: $primary-color;
+    text-align: center;
+    margin-top: 0rem;
+  }
+}
 
+.portableStyle {
+  p{
+    font-weight: 100;
+    font-size: .8rem;
+  }
+}
 
+.boxImageProject {
+  // background-color: yellowgreen;
+  grid-column: 1/2;
+  grid-row: 1/4;
+  border: 1px solid $neutral-gray;
+  // width: 40rem;
+  // height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin:  3rem 1rem;
+  padding: 1rem;
+}
 
-// .infoBubble {
-//   background-color: white;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   z-index: 1000; 
-//   border: 1px solid gray;
-//   border-radius: 8px;
+.projectImage {
+  // width: 10rem;
+  height: 10rem;
+  padding: 1rem;
 
-//   animation: fadeInUp 0.5s ease forwards; 
+  object-fit: cover;
+  border-radius: 8px;
+}
 
-// }
+.visitRepoAndWebsiteButtons {
+  position: absolute;
+  bottom: 20px; /* Distanza dal basso */
+  right: 20px; /* Distanza da destra */
+  display: flex;
+  gap: 10px;
+}
+
+.styledButton {
+  color: $primary-color;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 100;
+  transition: background-color 0.3s ease;
+  // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  &:hover {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+.technologiesUsed {
+  // grid-column: 1 / 4;
+  // grid-row: 4 / 5;
+  position: absolute;
+  bottom: 0rem;
+  left: 0;
+  margin-bottom: -1rem;
+
+  margin-left: .5rem;
+  padding: 1rem 0;
+}
 
 @keyframes fadeInUp {
   from {
@@ -105,7 +178,6 @@
   }
 }
 
-
 .infoBubble {
   background-color: white;
   position: fixed;
@@ -113,8 +185,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1000; 
-  border: 1px solid gray;
+  z-index: 1000;
+  border-bottom: 1px solid $neutral-gray;
+
   // border-radius: 8px;
   opacity: 0;
   animation: fadeInUp 0.5s ease forwards;
@@ -124,6 +197,3 @@
 .infoBubble.exit {
   animation: fadeOutDown 0.5s ease forwards;
 }
-
-
-

@@ -58,11 +58,11 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
   return (
     <div className={styles.projectListContainer}>
       {/* Filtro per categoria */}
-      <CategoryFilter
+      {/* <CategoryFilter
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
         importanceOrder={importanceOrder}
-      />
+      /> */}
 
       {/* Lista dei progetti */}
       {sortedCategories.map((category, index) => (
@@ -81,7 +81,7 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
                 onMouseLeave={handleMouseLeave}
               >
                 <div className={styles.boxTextProject}>
-                  <h3>{project.name}</h3>
+                  <h3>{project.name.toUpperCase()}</h3>
                   <div className={styles.portableStyle}>
                     <PortableText value={project.content[0]} />
                   </div>
