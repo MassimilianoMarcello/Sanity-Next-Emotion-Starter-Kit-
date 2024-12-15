@@ -14,11 +14,11 @@ const NoProjectsMessage: React.FC<NoProjectsMessageProps> = ({ handleClearSelect
       <Image
         src="/logo.png"
         alt="mass dev logo"
-        width={120}
+        width={400}
         height={120}
       />
       {/* <ClearButton onClick={handleClearSelection}>Clear</ClearButton> */}
-      <p>Oops! No projects with this tech combo yet. Check back soon!</p>
+      <h1>Oops! No projects with this tech combo yet. Check back soon!</h1>
     </div>
   );
 };

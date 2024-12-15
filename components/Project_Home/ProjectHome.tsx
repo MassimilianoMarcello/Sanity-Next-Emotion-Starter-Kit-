@@ -31,12 +31,13 @@ export default function Home() {
       }, []);
   
     return (
-      <section className="home-section">
+      <section className={styles.homesection}>
         <HeaderSection
           // projects={projects}
           // setFilteredProjects={setFilteredProjects}
           // setOpenProjectId={setOpenProjectId}
         />
+        <h1>Projects</h1>
         <ProjectFilter
           projects={projects}
           setFilteredProjects={setFilteredProjects}
