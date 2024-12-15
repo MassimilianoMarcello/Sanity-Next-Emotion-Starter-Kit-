@@ -1,3 +1,6 @@
+@import '../../app/main.module.scss';
+
+
 .technologiesList{
   display: flex;
 
@@ -8,19 +11,20 @@
   li{
     
     list-style: none;
-    background-color: #f1f1f1;
-    color: #5f6368;
-    border: 1px solid #e0e0e0;
+    background-color:white;
+    color: #465567;
+    font-weight: 300;
+    border: .1rem solid $primary-color;
     border-radius: 4px;
-    padding: 10px 15px;
+    padding: .2rem .5rem;
     text-align: center;
     text-decoration: none;
     font-size: 1rem;
     transition: background-color 0.3s ease, border-color 0.3s ease;
-    &:hover {
-      background-color: #e0e0e0;
-      border-color: #b0b0b0;
-    }
+    // &:hover {
+    //   background-color: #d4ca0a;
+    //   border-color: #b0b0b0;
+    // }
   }
 
 }

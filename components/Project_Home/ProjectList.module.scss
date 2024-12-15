@@ -19,9 +19,9 @@
   position: sticky;
   top: 0;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 200;
   color: $primary-color;
-  background-color: $background-color;
+  // background-color: $background-color;
   padding: 1rem;
   width: 150px;
   text-align: right;
@@ -37,16 +37,17 @@
 .projectCard {
   display: flex;
   flex-wrap: wrap;
-  background-color: $secondary-color;
-  border: 1px solid $neutral-gray;
-  border-radius: 8px;
+  // background-color: $secondary-color;
+  border-top: 1px solid $neutral-gray;
+  border-bottom: 1px solid $neutral-gray;
+  // border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
   }
 }
 // .projectListContainer {
@@ -114,7 +115,7 @@
   height: 100%;
   z-index: 1000; 
   border: 1px solid gray;
-  border-radius: 8px;
+  // border-radius: 8px;
   opacity: 0;
   animation: fadeInUp 0.5s ease forwards;
   transition: opacity 0.5s ease;

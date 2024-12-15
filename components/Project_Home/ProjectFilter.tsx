@@ -79,9 +79,12 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
             {technology}
           </button>
         ))}
+        <span className={styles.clearButtonContainer}>
         <button className={styles.clearButton} onClick={handleClearSelection}>
           Clear
         </button>
+        </span>
+ 
       </section>
       {/* Controllo per mostrare NoProjectsMessage */}
       {localFilteredProjects.length === 0 && selectedTechnologies.length > 0 && (

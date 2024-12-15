@@ -71,7 +71,7 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
           className={`${styles.categorySection} ${styles.fadeIn}`}
           style={{ animationDelay: `${index * 0.2}s` }}
         >
-          <div className={styles.categoryLabel}>{category}</div>
+          <div className={styles.categoryLabel}>{category.toUpperCase()}</div>
           <div className={styles.projectCards}>
             {groupedProjects[category]?.map((project) => (
               <div

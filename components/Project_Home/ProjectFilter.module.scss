@@ -17,7 +17,7 @@
   
   .theButton {
     padding: 0.55rem 1.2rem;
-    border: 2px solid #9175ba;
+    border: .01rem solid #9175ba;
     border-radius: 25px;
     background-color: transparent;
     color: #9175ba;
@@ -40,9 +40,21 @@
     border-color: #9175ba;
     box-shadow: 0px 4px 10px rgba(145, 117, 186, 0.4);
   }
-  
+  .active:hover {
+    background-color: #9175ba;
+    color: #eeffff;
+    border-color: #9175ba;
+    box-shadow: 0px 4px 10px rgba(145, 117, 186, 0.4);
+  }
+  .clearButtonContainer {
+    border-left: .2rem solid #9175ba;
+ padding-left: .5rem;
+ margin-left: 1rem;
+   
+  }
   .clearButton {
     padding: 0.5rem 1rem;
+ 
     background-color: #eeffff;
     color: #9175ba;
     border: 2px solid #9175ba;
