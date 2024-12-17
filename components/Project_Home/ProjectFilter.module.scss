@@ -3,7 +3,8 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
+    // padding: 1rem;
+    margin-left: 11.2rem;
   }
   
   .filter {
@@ -11,17 +12,17 @@
     flex-wrap: wrap;
     gap: 0.5rem;
     justify-content: center;
-    border: #9175ba .1px solid;
-    padding: 1rem;
+    // border: #9175ba .1px solid;
+    padding: .5rem;
   }
   
   .theButton {
-    padding: 0.55rem 1.2rem;
+    padding: 0.25rem .6rem;
     border: .01rem solid #9175ba;
     border-radius: 25px;
     background-color: transparent;
     color: #9175ba;
-    font-size: .7rem;
+    font-size: .5rem;
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
@@ -47,8 +48,8 @@
     box-shadow: 0px 4px 10px rgba(145, 117, 186, 0.4);
   }
   .clearButtonContainer {
-    border-left: .2rem solid #9175ba;
- padding-left: .5rem;
+    border-left: .1rem solid #9175ba;
+//  padding-left: .5rem;
  margin-left: 1rem;
    
   }
@@ -59,6 +60,9 @@
     color: #9175ba;
     border: 2px solid #9175ba;
     border-radius: 25px;
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
