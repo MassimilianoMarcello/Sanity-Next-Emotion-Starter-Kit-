@@ -119,30 +119,58 @@ box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 
 .visitRepoAndWebsiteButtons {
   position: absolute;
-  bottom: 20px; /* Distanza dal basso */
-  right: 20px; /* Distanza da destra */
+  bottom: 0px; /* Distanza dal basso */
+  right: 0px; /* Distanza da destra */
   display: flex;
+  align-items: center;
+  margin-bottom: 0rem;
   gap: 10px;
+  padding: 0;
+  img{
+    margin-bottom: -.2rem;
+    margin-left: .5rem;
+    // background-color: yellow;
+  }
 }
 
+// Classe base con proprietà comuni
 .styledButton {
-  color: $primary-color;
-  padding: 10px 20px;
+  padding: 1rem;
   border-radius: 5px;
   font-size: 14px;
   text-align: center;
   text-decoration: none;
   font-weight: 100;
   transition: background-color 0.3s ease;
-  // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
   a {
     color: inherit;
     text-decoration: none;
+    list-style: none
   }
-  &:hover {
-    background-color: $primary-color;
-    color: white;
-  }
+
+  // &:hover {
+  //   background-color: $primary-color;
+  //   color: white;
+  // }
+}
+
+// Estendi la classe base per i due bottoni
+.styledButtonGit {
+  @extend .styledButton;
+
+  img{
+    margin-bottom: -.5rem;
+    
+      }
+}
+
+.styledButtonWebsite {
+  @extend .styledButton;
+  img{
+    margin-bottom: -.3rem;
+    
+      }
 }
 
 .technologiesUsed {
@@ -178,16 +206,18 @@ box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
     transform: translateY(20px); /* Movimento più leggero */
   }
 }
-
+// styles for projectInfo compoenent
 .infoBubble {
   background-color: white;
+
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1000;
-  border-bottom: 1px solid $neutral-gray;
+  border-bottom: 1px solid $primary-color;
+  // border-left: 1px solid $primary-color;
 
   // border-radius: 8px;
   opacity: 0;
@@ -197,4 +227,40 @@ box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 
 .infoBubble.exit {
   animation: fadeOutDown 0.5s ease forwards;
+}
+.projectInfo{
+
+  font-size: 1.2rem;
+  font-weight: 100;
+  color: $primary-color;
+  text-align: center;
+  margin-top: 0rem;
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 200;
+    color: $primary-color;
+    text-align: center;
+    margin-top: 0rem;
+  }
+
+
+  .titleBubble{
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: $primary-color;
+    text-align: center;
+    margin-top: 0rem;
+  }
+a{   
+
+  
+  // @extend .styledButton;
+  img{
+    margin-bottom: -.3rem;
+    margin-left: .3rem;
+    
+      }
+}
+ 
+
 }

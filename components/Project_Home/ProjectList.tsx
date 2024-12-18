@@ -6,6 +6,7 @@ import { Project } from "@/types/projects";
 import CategoryFilter from "./CategoryFilter";
 import styles from "./ProjectList.module.scss";
 import Link from "next/link";
+import Image from "next/image";
 
 interface ProjectListProps {
   projects: Project[];
@@ -94,11 +95,14 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
                   />
                 </div>
                 <div className={styles.visitRepoAndWebsiteButtons}>
-                  <div className={styles.styledButton}>
+                  <div className={styles.styledButtonGit}>
                     <Link href={project.githubUrl}>GitHub</Link>
+                    <Image src="/github.svg" alt="external link" width={28} height={28} />
                   </div>
-                  <div className={styles.styledButton}>
-                    <Link href={project.url}>Visit Website</Link>
+                  <div className={styles.styledButtonWebsite}>
+                    <Link href={project.url}>Visit Website
+                    <Image src="/forward.svg" alt="external link" width={20} height={20} />
+                    </Link>
                   </div>
                 </div>
                 <div className={styles.technologiesUsed}>

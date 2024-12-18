@@ -1,14 +1,18 @@
 import React from "react";
 import Image from "next/image";
-// import ClearButton from "./ClearButton";
 import styles from "./NoProject.module.scss";
 
-// Definisci i tipi delle props per NoProjectsMessage
 interface NoProjectsMessageProps {
+  selectedTechnologies: string[];
   handleClearSelection: () => void;
 }
 
-const NoProjectsMessage: React.FC<NoProjectsMessageProps> = ({ handleClearSelection }) => {
+const NoProjectsMessage: React.FC<NoProjectsMessageProps> = ({
+  selectedTechnologies,
+  handleClearSelection,
+}) => {
+  const technologiesList = selectedTechnologies.join(", ");
+
   return (
     <div className={styles.MessageContainer}>
       <Image
@@ -17,11 +21,22 @@ const NoProjectsMessage: React.FC<NoProjectsMessageProps> = ({ handleClearSelect
         width={400}
         height={120}
       />
-      {/* <ClearButton onClick={handleClearSelection}>Clear</ClearButton> */}
-      <h1>Oops! No projects with this tech combo yet. Check back soon!</h1>
+      <h1>Oops! No projects match your selection.</h1>
+      {selectedTechnologies.length > 0 && (
+        <p>
+          You selected: <strong>{technologiesList}</strong>.
+        </p>
+      )}
+      <button
+        onClick={handleClearSelection}
+        className={styles.clearSelectionButton}
+      >
+        Clear Selection
+      </button>
     </div>
   );
 };
 
 export default NoProjectsMessage;
+
 

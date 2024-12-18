@@ -1,6 +1,8 @@
 import { Project } from "@/types/projects";
 import Link from "next/link";
-import styles from "./ProjectInfo.module.scss";
+import style from "./ProjectInfo.module.scss";
+import styles from "./ProjectList.module.scss";
+import Image from "next/image";
 
 interface ProjectInfosProps {
   project: Project;
@@ -14,11 +16,18 @@ const ProjectInfos: React.FC<ProjectInfosProps> = ({ project, openProjectId }) =
         project._id === openProjectId ? styles.visible : styles.hidden
       }`}
     >
-      <h3>{project.name}</h3>
+      {/* <h3>{project.name}</h3> */}
 
       {project.challenges && project.challenges.length > 0 ? (
         <ul className={styles.challengesList}>
-          <h4>Challenges Faced:</h4>
+          {/* <h4 className={styles.titleBubble}>Challenges Faced:</h4> */}
+          <div className={styles.styledButton}>
+          <h3>{project.name.toUpperCase()}</h3>
+            <Link href={`/projects/${project.slug}`}>Challanges Faced Page
+                  <Image src="/forward.svg" alt="external link" width={20} height={20} />
+            </Link>
+          </div>
+          <p>Index:</p>
           {project.challenges.map((challenge) => {
             // Genera lo stesso ID basato sul titolo della challenge
             // Converte il titolo di una challenge in una stringa "slug-friendly", 
@@ -38,20 +47,21 @@ const ProjectInfos: React.FC<ProjectInfosProps> = ({ project, openProjectId }) =
         <p>No challenges faced for this project.</p>
       )}
 
-      <div className={styles.textDetails}>
-        <div className={styles.buttons}>
-          {/* <div className={styles.styledButton}>
-            <Link href={project.githubUrl}>GitHub</Link>
-          </div>
-          <div className={styles.styledButton}>
-            <Link href={project.url}>Visit Website</Link>
-          </div> */}
-          <div className={styles.styledButton}>
-            <Link href={`/projects/${project.slug}`}>Click for Details</Link>
-          </div>
+<div className={styles.visitRepoAndWebsiteButtons}>
+                  <div className={styles.styledButtonGit}>
+                    <Link href={project.githubUrl}>GitHub</Link>
+                    <Image src="/github.svg" alt="external link" width={28} height={28} />
+                  </div>
+                  <div className={styles.styledButtonWebsite}>
+                    <Link href={project.url}>Visit Website
+                    <Image src="/forward.svg" alt="external link" width={20} height={20} />
+                    </Link>
+              
+                </div>
+   
         </div>
       </div>
-    </div>
+  
   );
 };
 
