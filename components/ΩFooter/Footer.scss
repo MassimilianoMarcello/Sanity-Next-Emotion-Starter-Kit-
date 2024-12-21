@@ -1,9 +1,19 @@
 @import '../../app/main.module.scss';
 
 
-.footer-container{
-background-color: #171637;
-height: 5rem;
-border-top: .1rem solid $primary-color;
-margin: -.5rem;
-}
+.footer-container {
+    background-color: #282c34;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    height: 4rem;
+    margin: -1rem;
+  
+    p {
+      margin:3rem 0;
+
+      letter-spacing: 0.5px;
+    }
+  }
+  
